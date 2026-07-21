@@ -6,8 +6,6 @@ import {
   isAnnouncementGroup,
 } from "../cache/groups.js";
 import { broadcast } from "../services/broadcast.service.js";
-import { getSocket } from "../whatsapp.js";
-import { extractBroadcastMessage } from "../utils/message.js";
 
 export async function handleMessagesUpsert(
   event: BaileysEventMap["messages.upsert"],
@@ -39,14 +37,5 @@ async function processMessage(message: WAMessage): Promise<void> {
   }
 
   const targets = getChildGroups(announcement.linkedParent);
-
-  const socket = getSocket();
-
-  const broadcastMessage = await extractBroadcastMessage(socket, message);
-
-  if (!broadcastMessage) {
-    return;
-  }
-
-  await broadcast(targets, broadcastMessage);
+  await broadcast(targets, message);
 }
