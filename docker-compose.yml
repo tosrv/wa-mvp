@@ -1,0 +1,17 @@
+services:
+  wa-service:
+    container_name: wa-broadcast-service
+
+    build:
+      context: .
+
+    restart: unless-stopped
+
+    ports:
+      - "3001:3001"
+
+    env_file:
+      - .env
+
+    volumes:
+      - ./auth:/app/auth
