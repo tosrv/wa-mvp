@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    /* Language */
+    "target": "ES2023",
+    "lib": [
+      "ES2023"
+    ],
+    /* Module */
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    /* Output */
+    "rootDir": "./src",
+    "outDir": "./dist",
+    /* Type Checking */
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    /* Interop */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    /* Node */
+    "types": [
+      "node"
+    ],
+    /* Emit */
+    "sourceMap": true,
+    "declaration": false,
+    "removeComments": false,
+    /* Misc */
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "auth"
+  ]
+}
