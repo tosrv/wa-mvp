@@ -6,6 +6,7 @@ import {
   isAnnouncementGroup,
 } from "../cache/groups.js";
 import { broadcast } from "../services/broadcast.service.js";
+import logger from "../config/logger.js";
 
 export async function handleMessagesUpsert(
   event: BaileysEventMap["messages.upsert"],
@@ -38,4 +39,11 @@ async function processMessage(message: WAMessage): Promise<void> {
 
   const targets = getChildGroups(announcement.linkedParent);
   await broadcast(targets, message);
+
+  logger.info({
+    event: "announcement.detected",
+    announcement: announcement.subject,
+    communityId: announcement.linkedParent,
+    targetCount: targets.length,
+  });
 }
